@@ -4,8 +4,12 @@ import persistReducer from "redux-persist/es/persistReducer";
 
 import { v4 as uuidv4 } from "uuid";
 
-const initialState = {
-  todos: [{ id: uuidv4(), task: "", completed: false, isEditing: false }],
+interface initialStateType {
+  todos: { id: string; task: string; completed: boolean; isEditing: boolean }[];
+}
+
+const initialState: initialStateType = {
+  todos: [],
 };
 
 const todoSlice = createSlice({

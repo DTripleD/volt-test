@@ -39,15 +39,19 @@ function App() {
       <h1>ToDo list</h1>
       <TodoForm />
       <Filter status={status} setStatus={setStatus} />
-      <TodoList>
-        {filteredTodos.map((todo) =>
-          todo.isEditing ? (
-            <EditTodoForm task={todo} key={todo.id} />
-          ) : (
-            <Todo task={todo} key={todo.id} />
-          )
-        )}
-      </TodoList>
+      {filteredTodos.length > 0 ? (
+        <TodoList>
+          {filteredTodos.map((todo) =>
+            todo.isEditing ? (
+              <EditTodoForm task={todo} key={todo.id} />
+            ) : (
+              <Todo task={todo} key={todo.id} />
+            )
+          )}
+        </TodoList>
+      ) : (
+        <h2>No ToDo's yet</h2>
+      )}
     </TodoWrapper>
   );
 }
